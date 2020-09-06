@@ -9,22 +9,21 @@ from customers.models import Customer
 class Cart(models.Model):
     products = models.ManyToManyField(Product)
     date_created = models.DateTimeField()
-    p_name = models.CharField(max_length=7, default='proucts')
+    total_price = models.DecimalField(max_digits=7, decimal_places=2,default=1.00)
+    status=models.CharField(max_length=50,null=True)
 
     
     def __str__(self):
-        return self.p_name
+        return self.status
 
 
 class Payment(models.Model):
-    customer = models.ForeignKey(Customer,on_delete=models.CASCADE)
     payment_method = models.CharField(max_length=30)
-    order = models.ForeignKey('Order',on_delete=models.CASCADE, related_name='+')
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     date_of_payment = models.DateTimeField()
     
     def __str__(self):
-        return self.customer
+        return self.payment_method
 
 
 class Order(models.Model):
@@ -41,4 +40,4 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=5, decimal_places=2)
     
     def __str__(self):
-        return self.order_number
+        return self.status

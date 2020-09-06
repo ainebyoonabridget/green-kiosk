@@ -14,7 +14,7 @@ class Customer(models.Model):
     profile_picture = models.ImageField()
     
     def __str__(self):
-        return self.gender
+        return self.user.get_full_name()
 
 class ShippingAdress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -22,4 +22,4 @@ class ShippingAdress(models.Model):
     notes = models.TextField()
     
     def __str__(self):
-        return self.notes
+        return self.address

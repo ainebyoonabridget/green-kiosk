@@ -33,18 +33,19 @@ class Product(models.Model):
     suplier = models.ForeignKey(ProductSuplier,on_delete=models.CASCADE)
     kiosk = models.ForeignKey(Kiosk,on_delete=models.CASCADE)
     number_in_stock = models.IntegerField()
+    image = models.ImageField(null=True,upload_to="gallery")
+
     
     def __str__(self):
         return self.title
 
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product,on_delete=models.CASCADE)
-    image = models.ImageField()
-    name = models.CharField(max_length=7, default='0000000', editable=False)
+# class ProductImage(models.Model):
+#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
+#     name = models.CharField(max_length=7, default='0000000', editable=False)
 
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class ProductReview(models.Model):
