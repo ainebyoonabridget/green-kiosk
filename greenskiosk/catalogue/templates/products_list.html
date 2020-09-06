@@ -1,7 +1,53 @@
-{%for product in products%}
+{% load static %}
+<!Doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+</head>
+<body>
 
+<div class="page-header">
+    <h1><a href="/">Greenskiosk</a></h1>
+</div>
+
+
+<div class="cont">
+
+{%for product in products%}
+<div class="card  float-left" >
+<img src="{{product.image.url}}" class="card-img-top" alt="images" style="width:300px;">
+<div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p>{{product.kiosk.currency}}-{{product.selling_price}}</p>
+    <p class="card-text">Some quick  text to about the product on the card,click read more.</p>
+    <a href="{{product.description}}" class="btn ">Read More</a>
+  </div>
+</div>
+</div>
+
+<!--<div class="prod-images">
+<div class="card" style="width: 30rem;">
+  <img src="{{product.image.url}}" class="card-img-top" alt="images" style="width:300px;">
+  <div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{{product.description}}" class="btn btn-primary">Read More</a>
+  </div>
+</div>
+</div>-->
+
+<!--<div >
 <img src="{{product.image.url}}"  />
 <h3>{{product.title}}- {{product.kiosk.currency}}{{product.selling_price}}</h3>
 <p><a href={{product.description}> Description </a></p>
+</div>-->
 
 {% endfor %}
+
+
+
+</body>
+</html>
