@@ -14,7 +14,7 @@ class KioskOwner(models.Model):
     profile_picture = models.ImageField()
 
     def __str__(self):
-        return self.gender
+        return self.user.get_full_name()
 
 
 class Kiosk(models.Model):
