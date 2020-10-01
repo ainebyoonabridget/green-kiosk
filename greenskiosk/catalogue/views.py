@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 from django.http import request
+# from .models import Product
 from .forms import ProductForm
 
 
@@ -11,9 +12,9 @@ def products_list(request):
     return render(request,'products_list.html',{'products':products})
 
 
-def product_description():
-    product = product.objects.all()
-    return render(request,'product_description.html',{'products':product})
+def product_description(request,product_id):
+    product = Product.objects.get(id=product_id)
+    return render(request,'product_description.html',{'product':product})
 
 def upload_product(request):
     form = ProductForm()
@@ -23,7 +24,7 @@ def upload_product(request):
         if form.is_valid():
             form.save()
         else:
-            form = ProductForm()
+            form = ProductForm
    
     return render(request, 'upload_product.html', {'form': form})
     
